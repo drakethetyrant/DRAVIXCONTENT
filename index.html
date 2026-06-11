@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dravix Content — Words That Work While You Sleep</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--black:#070707;--white:#f4f1ec;--gold:#c8a84b;--gold2:#e8c96a;--gray1:#111;--gray2:#1c1c1c;--gray3:#2a2a2a;--mid:#555;--light:#888;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Mono',monospace;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:var(--gold);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,7,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,75,0.1);}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:0.06em;color:var(--white);text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-back{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.nav-back:hover{color:var(--gold);}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,168,75,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,0.025) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;}
+.hero-glow{position:absolute;bottom:-100px;right:-100px;width:700px;height:700px;background:radial-gradient(circle,rgba(200,168,75,0.05) 0%,transparent 70%);pointer-events:none;}
+.hero-eyebrow{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,9vw,8rem);line-height:0.9;letter-spacing:-0.03em;max-width:1000px;}
+.hero-title .gold{color:var(--gold);}
+.hero-title .outline{-webkit-text-stroke:1px var(--white);color:transparent;}
+.hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:48px;flex-wrap:wrap;}
+.hero-sub{font-size:0.78rem;color:var(--mid);max-width:420px;line-height:2;}
+.btn-gold{font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;padding:18px 40px;background:var(--gold);color:var(--black);border:none;cursor:pointer;text-decoration:none;display:inline-block;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:background 0.2s,transform 0.2s;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-outline{font-family:'Syne',sans-serif;font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;padding:18px 40px;background:transparent;color:var(--white);border:1px solid var(--gray3);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;margin-left:12px;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+.ticker-wrap{border-top:1px solid var(--gray2);border-bottom:1px solid var(--gray2);overflow:hidden;padding:12px 0;background:var(--gray1);}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 25s linear infinite;}
+.ticker-item{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);padding:0 40px;}
+.ticker-item span{color:var(--gold);margin-right:8px;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.section{padding:100px 48px;}
+.section-eyebrow{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:48px;display:flex;align-items:center;gap:16px;}
+.section-eyebrow::after{content:'';width:60px;height:1px;background:var(--gold);opacity:0.4;}
+
+/* SERVICE CARDS */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2px;}
+.service-card{background:var(--gray1);border:1px solid var(--gray2);padding:48px 40px;position:relative;overflow:hidden;transition:all 0.3s;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--gold),transparent);opacity:0;transition:opacity 0.3s;}
+.service-card:hover{background:var(--gray2);}
+.service-card:hover::before{opacity:1;}
+.service-num{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--gold);opacity:0.08;position:absolute;top:24px;right:28px;line-height:1;}
+.service-icon{font-size:1.8rem;margin-bottom:20px;}
+.service-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:12px;line-height:1.2;}
+.service-price{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.service-desc{font-size:0.7rem;color:var(--mid);line-height:1.9;margin-bottom:28px;}
+.service-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.stag{font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--gray3);color:var(--mid);}
+.stag.gold{border-color:rgba(200,168,75,0.3);color:var(--gold);}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-top:0;}
+.stat-card{background:var(--gray1);border:1px solid var(--gray2);padding:36px;text-align:center;}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:var(--gold);line-height:1;margin-bottom:8px;}
+.stat-label{font-size:0.62rem;color:var(--mid);line-height:1.7;letter-spacing:0.05em;}
+
+/* PROCESS */
+.process-list{display:flex;flex-direction:column;gap:2px;}
+.process-step{display:grid;grid-template-columns:80px 1fr auto;gap:32px;align-items:center;background:var(--black);border:1px solid var(--gray2);padding:32px 36px;transition:border-color 0.2s;}
+.process-step:hover{border-color:var(--gold);}
+.step-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;color:var(--gold);opacity:0.3;line-height:1;}
+.step-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:6px;}
+.step-desc{font-size:0.68rem;color:var(--mid);line-height:1.8;}
+.step-tag{font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:6px 14px;border:1px solid var(--gray3);color:var(--mid);white-space:nowrap;}
+
+/* QUOTE FORM */
+.quote-wrap{padding:100px 48px;background:var(--gray1);border-top:1px solid var(--gray2);border-bottom:1px solid var(--gray2);}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1000px;}
+.quote-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px;}
+.quote-title span{color:var(--gold);}
+.quote-body{font-size:0.72rem;color:var(--mid);line-height:2;margin-bottom:32px;}
+.quote-perks{display:flex;flex-direction:column;gap:14px;}
+.quote-perk{display:flex;align-items:center;gap:14px;font-size:0.68rem;color:var(--light);}
+.quote-perk::before{content:'✓';color:var(--gold);flex-shrink:0;}
+.quote-form{background:var(--black);border:1px solid var(--gray2);padding:40px;}
+.form-group{margin-bottom:16px;}
+.form-label{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:8px;}
+.form-input{width:100%;background:var(--gray2);border:1px solid var(--gray3);color:var(--white);font-family:'DM Mono',monospace;font-size:0.72rem;padding:12px 16px;outline:none;transition:border-color 0.2s;}
+.form-input:focus{border-color:var(--gold);}
+.form-input::placeholder{color:var(--mid);}
+.form-select{width:100%;background:var(--gray2);border:1px solid var(--gray3);color:var(--white);font-family:'DM Mono',monospace;font-size:0.72rem;padding:12px 16px;outline:none;appearance:none;}
+.form-select option{background:var(--gray2);}
+
+/* FAQ */
+.faq-list{max-width:700px;display:flex;flex-direction:column;gap:2px;}
+.faq-item{background:var(--gray1);border:1px solid var(--gray2);}
+.faq-q{padding:22px 28px;font-family:'Syne',sans-serif;font-weight:600;font-size:0.85rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color 0.2s;}
+.faq-q:hover{color:var(--gold);}
+.faq-q span{color:var(--gold);font-size:1.1rem;transition:transform 0.2s;}
+.faq-a{padding:0 28px;max-height:0;overflow:hidden;transition:all 0.3s;font-size:0.68rem;color:var(--mid);line-height:1.9;}
+.faq-item.open .faq-a{max-height:200px;padding:0 28px 24px;}
+.faq-item.open .faq-q span{transform:rotate(45deg);}
+
+.cta-section{padding:120px 48px;text-align:center;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(200,168,75,0.07) 0%,transparent 70%);pointer-events:none;}
+.cta-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-0.02em;line-height:1.05;margin-bottom:20px;}
+.cta-sub{font-size:0.75rem;color:var(--mid);margin-bottom:48px;}
+
+footer{padding:32px 48px;border-top:1px solid var(--gray2);display:flex;align-items:center;justify-content:space-between;font-size:0.6rem;color:var(--mid);flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;color:var(--white);}
+.footer-logo span{color:var(--gold);}
+
+@media(max-width:768px){
+  nav{padding:16px 20px;}
+  .hero{padding:100px 20px 60px;}
+  .section{padding:60px 20px;}
+  .quote-wrap{padding:60px 20px;}.quote-grid{grid-template-columns:1fr;gap:40px;}
+  .process-step{grid-template-columns:50px 1fr;gap:16px;}.step-tag{display:none;}
+  .cta-section{padding:80px 20px;}
+  footer{padding:24px 20px;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://drakethetyrant.github.io/dravixworks" class="nav-logo">DRAVIX<span>.</span>WORKS</a>
+  <a href="https://drakethetyrant.github.io/dravixworks" class="nav-back">← Back to all services</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <p class="hero-eyebrow">Dravix Content — Content That Converts</p>
+  <h1 class="hero-title">
+    Words that<br>
+    work while<br>
+    <span class="gold">you sleep.</span>
+  </h1>
+  <div class="hero-row">
+    <p class="hero-sub">LinkedIn posts, newsletters, and YouTube scripts written in your voice — so you stay visible, build authority, and attract clients without lifting a pen.</p>
+    <div>
+      <a href="#services" class="btn-gold">See Services</a>
+      <a href="#quote" class="btn-outline">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span>✦</span>LinkedIn Ghostwriting</span>
+    <span class="ticker-item"><span>✦</span>Newsletter Writing</span>
+    <span class="ticker-item"><span>✦</span>YouTube Scripts</span>
+    <span class="ticker-item"><span>✦</span>SEO Articles</span>
+    <span class="ticker-item"><span>✦</span>Brand Voice</span>
+    <span class="ticker-item"><span>✦</span>Content Strategy</span>
+    <span class="ticker-item"><span>✦</span>LinkedIn Ghostwriting</span>
+    <span class="ticker-item"><span>✦</span>Newsletter Writing</span>
+    <span class="ticker-item"><span>✦</span>YouTube Scripts</span>
+    <span class="ticker-item"><span>✦</span>SEO Articles</span>
+    <span class="ticker-item"><span>✦</span>Brand Voice</span>
+    <span class="ticker-item"><span>✦</span>Content Strategy</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section" style="padding-bottom:0;">
+  <div class="section-eyebrow">Why Content Matters</div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">5x</div>
+      <div class="stat-label">more engagement on personal LinkedIn accounts vs company pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">$5K</div>
+      <div class="stat-label">average monthly retainer for LinkedIn ghostwriting per client</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1B+</div>
+      <div class="stat-label">LinkedIn members — the largest B2B platform on earth</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">3 wks</div>
+      <div class="stat-label">before most business owners quit writing their own newsletter</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-eyebrow">What We Write</div>
+  <div class="services-grid">
+
+    <!-- LinkedIn -->
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">💼</div>
+      <div class="service-name">LinkedIn Ghostwriting</div>
+      <div class="service-price">Custom pricing — monthly retainer</div>
+      <div class="service-desc">We write your LinkedIn posts in your voice so you show up consistently, build authority, and attract inbound leads — without spending hours staring at a blank screen. One short interview per week is all we need.</div>
+      <div class="service-tags">
+        <span class="stag gold">Most Popular</span>
+        <span class="stag">Personal Brand</span>
+        <span class="stag">B2B</span>
+        <span class="stag">Lead Gen</span>
+      </div>
+      <a href="#quote" class="btn-gold" style="font-size:0.65rem;padding:12px 24px;">Get a Quote →</a>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">📬</div>
+      <div class="service-name">Newsletter Writing</div>
+      <div class="service-price">Custom pricing — monthly retainer</div>
+      <div class="service-desc">We write your weekly or bi-weekly newsletter for you — researched, written, and ready to send. You stay top of mind with your audience every single week without burning out after 3 issues like everyone else does.</div>
+      <div class="service-tags">
+        <span class="stag gold">Highest Retention</span>
+        <span class="stag">Email</span>
+        <span class="stag">Thought Leadership</span>
+      </div>
+      <a href="#quote" class="btn-gold" style="font-size:0.65rem;padding:12px 24px;">Get a Quote →</a>
+    </div>
+
+    <!-- YouTube Scripts -->
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">🎬</div>
+      <div class="service-name">YouTube Script Writing</div>
+      <div class="service-price">Custom pricing — per script or retainer</div>
+      <div class="service-desc">Every creator hates writing scripts. We write them in your exact voice — with a strong hook, structured storytelling, and re-hooks every 90 seconds to keep viewers watching. You just record.</div>
+      <div class="service-tags">
+        <span class="stag gold">High Demand</span>
+        <span class="stag">Creators</span>
+        <span class="stag">Long-form</span>
+      </div>
+      <a href="#quote" class="btn-gold" style="font-size:0.65rem;padding:12px 24px;">Get a Quote →</a>
+    </div>
+
+    <!-- SEO Content -->
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">📈</div>
+      <div class="service-name">SEO Content & Blog Writing</div>
+      <div class="service-price">Custom pricing — per article or retainer</div>
+      <div class="service-desc">High-ranking articles written, optimized, and published directly to your site. We handle keyword research, structure, and delivery. Your site gets found on Google while you focus on your business.</div>
+      <div class="service-tags">
+        <span class="stag gold">Passive Traffic</span>
+        <span class="stag">Google Rankings</span>
+        <span class="stag">Long-term ROI</span>
+      </div>
+      <a href="#quote" class="btn-gold" style="font-size:0.65rem;padding:12px 24px;">Get a Quote →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works" style="padding-top:0;">
+  <div class="section-eyebrow">How It Works</div>
+  <div class="process-list">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Tell Us Your Voice</div>
+        <div class="step-desc">Fill out the quote form. We learn your tone, your audience, your goals, and what you want to be known for.</div>
+      </div>
+      <div class="step-tag">Day 1</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">We Study You</div>
+        <div class="step-desc">We analyze your existing content, your industry, and your competitors to build a content strategy that sounds exactly like you — not like AI.</div>
+      </div>
+      <div class="step-tag">Days 2–3</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">First Drafts Delivered</div>
+        <div class="step-desc">We deliver your first batch of content for review. You give feedback. We refine until it sounds like you wrote it yourself.</div>
+      </div>
+      <div class="step-tag">Days 4–5</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">Publish & Repeat</div>
+        <div class="step-desc">Content goes live on schedule every week. Monthly check-ins to track performance and adjust strategy. You never miss a post again.</div>
+      </div>
+      <div class="step-tag">Weekly</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section class="quote-wrap" id="quote">
+  <div class="section-eyebrow">Get a Free Quote</div>
+  <div class="quote-grid">
+    <div>
+      <h2 class="quote-title">Your audience<br>is waiting to<br><span>hear from you.</span></h2>
+      <p class="quote-body">We don't do templates. Every piece of content is written specifically for your voice, your audience, and your goals. Tell us what you need and we'll send a custom quote within 24 hours.</p>
+      <div class="quote-perks">
+        <div class="quote-perk">Free quote within 24 hours</div>
+        <div class="quote-perk">Content that sounds like YOU not AI</div>
+        <div class="quote-perk">No contracts, cancel anytime</div>
+        <div class="quote-perk">First batch delivered in 5 days</div>
+        <div class="quote-perk">Priced for small businesses and creators</div>
+      </div>
+    </div>
+    <div class="quote-form">
+      <div id="quoteMsg"></div>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input id="qName" class="form-input" placeholder="Drake Johnson"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input id="qEmail" class="form-input" type="email" placeholder="you@email.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Needed</label>
+        <select id="qService" class="form-input form-select">
+          <option value="">Select a service...</option>
+          <option>LinkedIn Ghostwriting</option>
+          <option>Newsletter Writing</option>
+          <option>YouTube Script Writing</option>
+          <option>SEO Content & Blog Writing</option>
+          <option>Multiple Services</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Industry / Niche</label>
+        <input id="qIndustry" class="form-input" placeholder="e.g. Real Estate, Tech, Consulting..."/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Who is your audience?</label>
+        <textarea id="qAudience" class="form-input" rows="3" placeholder="e.g. Small business owners in Houston looking to scale..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Current content situation</label>
+        <select id="qSituation" class="form-input form-select">
+          <option value="">Select...</option>
+          <option>I post inconsistently and want to fix that</option>
+          <option>I have never posted and want to start</option>
+          <option>I post but it's not getting results</option>
+          <option>I'm too busy to write content myself</option>
+        </select>
+      </div>
+      <button onclick="submitQuote()" class="btn-gold" style="width:100%;text-align:center;display:block;padding:14px;margin-top:8px;">Get My Free Quote →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-eyebrow">FAQ</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Will it actually sound like me? <span>+</span></div>
+      <div class="faq-a">Yes — that's the entire point. We spend time studying your existing content, your vocabulary, your tone, and your stories before we write a single word. Most clients can't tell the difference between what we write and what they'd write themselves.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How much time do I need to put in? <span>+</span></div>
+      <div class="faq-a">Minimal. For LinkedIn we need a 15-30 minute interview once a week. For newsletters we need about 20 minutes of your thoughts. For scripts, we need a brief and any reference material. We handle everything else.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you use AI to write the content? <span>+</span></div>
+      <div class="faq-a">We use AI as a tool but every piece of content goes through a human editing pass. LinkedIn's algorithm actively suppresses raw AI content so we make sure everything reads like a real person wrote it — because a real person did review it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What results can I expect? <span>+</span></div>
+      <div class="faq-a">Results depend on your industry and audience, but consistent posting on LinkedIn typically leads to more profile views, inbound connection requests, and direct messages from potential clients within 30-60 days. One DTC founder closed a $1.2M partnership in his first year from LinkedIn ghostwriting alone.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I approve content before it goes live? <span>+</span></div>
+      <div class="faq-a">Always. Nothing goes live without your approval. We deliver drafts ahead of schedule so you have time to review, request changes, or approve. You stay in full control of your brand.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <h2 class="cta-title">Your next client<br>is one post away.</h2>
+  <p class="cta-sub">Get a free quote in 24 hours. No commitment required.</p>
+  <a href="#quote" class="btn-gold">Get a Free Quote →</a>
+</section>
+
+<footer>
+  <div class="footer-logo">DRAVIX<span>.</span>WORKS</div>
+  <div>© 2025 Dravix Works. All rights reserved.</div>
+  <div>Built in Houston, TX.</div>
+</footer>
+
+<script>
+function submitQuote() {
+  const name = document.getElementById('qName').value.trim();
+  const email = document.getElementById('qEmail').value.trim();
+  const service = document.getElementById('qService').value;
+  const industry = document.getElementById('qIndustry').value.trim();
+  const audience = document.getElementById('qAudience').value.trim();
+  const situation = document.getElementById('qSituation').value;
+  if (!name || !email || !service) {
+    document.getElementById('quoteMsg').innerHTML = '<div style="background:rgba(255,80,80,0.08);border-left:2px solid #f55;padding:10px 14px;margin-bottom:16px;font-size:0.65rem;color:#f99;">Please fill in your name, email, and service needed.</div>';
+    return;
+  }
+  window.location.href = 'mailto:dravixworks@gmail.com?subject=Dravix Content Quote — ' + encodeURIComponent(service) + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nService: ' + service + '\nIndustry: ' + industry + '\nAudience: ' + audience + '\nSituation: ' + situation);
+  document.getElementById('quoteMsg').innerHTML = '<div style="background:rgba(200,168,75,0.08);border-left:2px solid #c8a84b;padding:10px 14px;margin-bottom:16px;font-size:0.65rem;color:#c8a84b;">Opening your email... We will reply within 24 hours!</div>';
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
